@@ -11,10 +11,14 @@ function _draw() {
 
 export default class GameController {
   // PUBLIC PARTS
-  
+
   mine() {
     console.log("ARE WE MINING");
     GameService.updateCount();
     _draw();
+  }
+
+  buyShovel() {
+    GameService.applyModifier();
   }
 }

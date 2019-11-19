@@ -1,16 +1,19 @@
 import store from "../store.js";
 
 class GameService {
-
-  updateCount(){
-    console.log("DID WE GET HERE?")
-    // throw new Error("YOU SHALL NOT PASS")
-    store.State.count += 1 //TODO: ADD MODS
-    console.log("DID WE GET HERE?")
+  updateCount() {
+    store.State.count +=
+      1 + store.Modifier.quantity * store.Modifier.multiplier;
   }
 
+  applyModifier() {
+    if (store.State.count >= store.Modifier.price) {
+      store.Modifier.quantity += 1;
+      store.State.count -= store.Modifier.price;
+    }
+  }
 }
 
-const GAMESERVICE = new GameService()
+const GAMESERVICE = new GameService();
 
-export default GAMESERVICE
+export default GAMESERVICE;
